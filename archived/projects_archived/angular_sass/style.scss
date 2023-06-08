@@ -1,0 +1,47 @@
+@import 'color';
+@import 'css';
+$font-stack: Helvetica, sans-serif;
+
+body {
+
+   background-color: $blackish;
+   font: 100% $font-stack;
+   margin:0;
+
+   .data-column {
+   
+      margin-top:20px;
+      height:200px;
+      margin-bottom:20px;
+
+      margin-left: auto;
+      width: 500px;
+      margin-right: auto;
+
+      .banner {
+         background-color:$whitish;
+         @include long-slab();
+      }
+
+      .main-nav {
+         background-color:$orangishRed;
+         @include long-slab();
+         margin-bottom:10px;
+
+         ul li {
+            display: inline;
+            margin-left: 15px;
+         }
+      }
+      .content {
+         @include border-radius(10px);
+         height:100%;
+         text-align:center;
+         background-color:$redish;
+      }
+      .footer {
+         background-color:$whitish;
+         @include long-slab();
+      }
+   }
+}

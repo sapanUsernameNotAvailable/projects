@@ -1,0 +1,53 @@
+# Caching Mechanism
+This project implements a caching mechanism for database reads. First time database reads are stored in an in-memory cache. The cache size has been fixed for now, but is easy to change. The cache removes the according to least recently used scheme. Any future database requests are first checked for their presence in cache. If not found, the system retrieves from database and stores the data in cache. If the cache is already full, then the eldest entry in the database which hasn't been used is discarded.
+
+## Caching Architecture
+Use of singletons, factory patterns, layering, etc. has been avoided to focus on the caching mechanism. However the mechanism itself is completely reusable. The following classes/interfaces will be created :
+
+### Cacheable Interface
+This interface will be implemented by any entity that can be stored in the cache. It requires only a single method which returns the key used to uniquely identify the Cacheable object.
+    
+    public int getKey();
+
+### Entity Class
+This is a sample class which implements the Cacheable interface and has some trivial attributes.
+
+### Cache
+This is the cache being used. It stores and retrieves by identifying the objects by their keys. It only works with objects of classes implementing Cacheable.
+
+### Dao
+The standard and stripped down data access object layer. Nothing fancy here.
+
+### Store
+Instead of the dao layer, the service layer is should use this layer instead. This layer wraps around both the dao and the caching mechanism to transparently increase the application's efficiency.
+
+It also has a control method to test the case when caching mechanism is not available.
+
+## Testing Architecture
+Pretty simple one. I will be using junit. There will be 2 test cases, each in separate classes. There will also be a separate class uesd to run the 2 cases. For the test cases, a 75 entry table will be created before either test is run. The cache size is set to 50. And the data will be requested 10,000 times. The data requests will be randomised for different entities. Each test will measure the time needed for completion and results will be printed on console and compared.
+
+### CacheAvailableTest class
+This class will run the test when the caching mechanism is available.
+
+### CacheNotAvailableTest class
+This class will run the test when the caching mechanism is not available. The test will use the control method of the Store class.
+
+## Result
+
+The caching mechanism outperformed normal scenario in the cases I ran.
+
+### sample runs: 
+ - run 1 :
+ - When caching available, test took 960 ms
+ - When caching not available, test took : 1491 ms
+ - run 2 :
+ - When caching available, test took 1088 ms
+ - When caching not available, test took : 1441 ms
+ - run 3 :
+ - When caching available, test took 1002 ms
+ - When caching not available, test took : 1439 ms
+
+## Miscellaneous :
+ - Duration : 2 days (July 2012): Caching implementation
+ - Duration : 1 day (November 2012): extracting the caching mechanism as a simpler console app and
+ testing implementation
