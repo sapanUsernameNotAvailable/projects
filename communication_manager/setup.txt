@@ -1,0 +1,8 @@
+npm init -y;
+npm install -g pkg;
+npm install --save express;
+npm install --save directory-tree;
+npm install --save uuid;
+touch index.js;
+echo 'console.log("hello");' > index.js;
+pkg index.js --targets=node18-macos-arm64;
