@@ -7,3 +7,6 @@ chmod u+x ./install-linux.sh;
 ## Run the program
 chmod u+x run-linux.sh;
 ./run-linux.sh
+
+## usage instructions
+
