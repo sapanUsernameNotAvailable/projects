@@ -7,5 +7,13 @@ graphics card
 driver
 	[no direct programmable interface to cable. only via driver api-graphics card route]
 opengl (os and gpu independent spec), Mesa/Mesa 3D (an example implementation+implementation of other specs)/proprietary implementation (higher level) (deprecated on apple)
-	/directx12(vulkan on windows, xbox)/vulkan(opengl successor. no first class apple offering/slow on apple)/metal(ios and mac)/webgpu(more features than webgl.unavailable for linux)
+	/directx12(vulkan on windows, xbox)/vulkan(opengl successor. android, linux, windows. no first class apple offering/slow on apple)/metal(ios and mac)/webgpu(more features than webgl.unavailable for linux)/opengl es(for embedded devices)
 
+[fork 1]	
+angle : platform specific translating library	
+opengl es 2/3 api	
+chromium, support in qt framework
+
+[fork 2]
+godot(vulkan, metal via moltenvk, no directx12)
+	/unreal engine(directx, vulkan, metal)
