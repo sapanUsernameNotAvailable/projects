@@ -10,7 +10,7 @@ opengl (os and gpu independent spec), Mesa/Mesa 3D (an example implementation+im
 	/directx12(vulkan on windows, xbox)/vulkan(opengl successor. android, linux, windows. no first class apple offering/slow on apple)/metal(ios and mac)/webgpu(more features than webgl.unavailable for linux)/opengl es(for embedded devices)
 
 [fork 1]	
-angle : platform specific translating library	
+angle : platform specific translating library (directx11, vulkan, metal)
 opengl es 2/3 api	
 chromium, support in qt framework
 
